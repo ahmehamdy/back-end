@@ -25,10 +25,13 @@ if (isset($_GET['edite'])) {
             $location = "./upload/$image_name";
             move_uploaded_file($tmp_name, $location);
             $old_image = $row['image'];
-            unlink("./upload/$old_image");
+            if($old_image != 'def.jpg'){
+                unlink("./upload/$old_image");
+            }
         }
 
-        $update = "UPDATE customers set full_name='$full_name',country='$country',age=$age,phone='$phone',gender='$gender',image='$image_name' where id=$id ";
+        $update = "UPDATE customers set full_name='$full_name',country='$country',age=$age,
+        phone='$phone',gender='$gender',image='$image_name' where id=$id ";
         $u = mysqli_query($connect, $update);
 
         if ($u) {

@@ -8,11 +8,17 @@ if (isset($_POST['submit'])) {
     $phone = $_POST['phone'];
     $gender = $_POST['gender'];
     
-    //image code
-    $image_name = rand(0,255).rand(0,255).$_FILES['image']['name'];
-    $tmp_name = $_FILES['image']['tmp_name'];
-    $location = "./upload/$image_name";
-    move_uploaded_file($tmp_name,$location);
+
+    if(empty($_FILES['image']['name'])){
+        $image_name = 'def.jpg';
+    }else{
+        //image code
+        $image_name = rand(0,255).rand(0,255).$_FILES['image']['name'];
+        $tmp_name = $_FILES['image']['tmp_name'];
+        $location = "./upload/$image_name";
+        move_uploaded_file($tmp_name,$location);
+        
+    }
 
 
 
