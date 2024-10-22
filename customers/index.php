@@ -21,7 +21,7 @@ if (isset($_GET['delete'])) {
     //delete query
     $delete = "DELETE FROM customers where id =$id ";
     mysqli_query($connect, $delete);
-    header('locatoin:/ahmed/customers/index.php');
+    header('location:./index.php');
 }
 
 ?>
